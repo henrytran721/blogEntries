@@ -1,0 +1,20 @@
+extend layout
+
+block content
+
+    h1 Author: #{author.name}
+
+    div(style='margin-left: 20px; margin-top: 20px')
+        h4 Author Blog Entries: 
+        
+        dl
+            each blog_entry in author_entries
+                dt
+                    a(href=blog_entry.url) #{blog_entry.title} - #{blog_entry.date_formatted}
+            else 
+                dt 
+                    p There are not entries to display.
+        
+    
+    p
+        a(href=author.url + '/delete') Delete Author

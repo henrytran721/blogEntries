@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    h1 #{title} : #{blog_entry.title}
+
+    p Description: #{blog_entry.description}
+
+     p Do you really want to delete this Blog Entry?
+            
+        form(method='POST' action='')
+            div.form-group
+                input#blog_entryid.form-control(type='hidden', name='blog_entryid', required='true', value=blog_entry._id)
+
+            button.btn.btn-primary(type='submit') Delete

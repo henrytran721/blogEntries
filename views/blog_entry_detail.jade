@@ -1,0 +1,19 @@
+extend layout
+
+block content
+    
+    div(class='blogDetail')
+        h1 Title: #{blog_entry.title}
+        a(href=blog_entry.author.url)
+            h4 Author: #{blog_entry.author.name}
+        h6 Date Created: #{blog_entry.date_formatted}
+        img(src=blog_entry.imageURL style='max-width: 60%;')
+        p(style='margin: 5% 0') #{blog_entry.description}
+    
+    div
+        a(href=blog_entry.url + '/delete') Delete Blog Entry
+        br
+        a(href=blog_entry.url + '/update') Update Blog Entry
+
+
+    

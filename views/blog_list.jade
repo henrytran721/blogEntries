@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1= title
+
+    ul
+        each blog_entry in blog_entry_list
+            li 
+                a(href=blog_entry.url) #{blog_entry.title} - #{blog_entry.date_formatted}
+        else 
+            p(style='margin: 2% -4%; padding: 0;') There are no entries to display.

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  // dynamic content
+  if err 
+    p Error getting dynamic content
+  else
+    p The blog has the following blog entry records: 
+  
+    ul
+      li #[strong Blog Entries:] !{data.blog_entry_count}
+      li #[strong Authors:] !{data.author_count}
