@@ -8,10 +8,12 @@ var { body, validationResult } = require('express-validator');
 var { sanitizeBody } = require('express-validator');
 
 exports.author_list = (req,res) => {
+    // runs a query and find all models / objects that match the author parameters
     Author.find()
-    // populates with the author model with previously inputted data
+    // populates data inside the author reference
         .populate('author')
         .exec((err, list_authors) => {
+            // list_authors pulls data from the previous function
             if(err) {return next(err)};
             res.render('author_list', {title: 'Author List', author_list: list_authors});
         })
@@ -21,6 +23,7 @@ exports.author_list = (req,res) => {
 exports.author_detail = (req, res, next) => {
     async.parallel({
         author: function(callback) {
+            // finds a single document by it's id field (req.params.id)
             Author.findById(req.params.id)
                 .exec(callback)
         },

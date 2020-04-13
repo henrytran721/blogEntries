@@ -8,10 +8,10 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var blogRouter = require('./routes/blog');
 var app = express();
-
+var dotenv = require('dotenv').config();
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://henrytran721:d@rkb1ad33r@cluster0-gevd4.azure.mongodb.net/blog_posts?retryWrites=true&w=majority';
+var dev_db_url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0-gevd4.azure.mongodb.net/blog_posts?retryWrites=true&w=majority`;
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 var db = mongoose.connection;
